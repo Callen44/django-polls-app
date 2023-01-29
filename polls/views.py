@@ -9,6 +9,7 @@ from django.views import generic
 from django.utils import timezone
 
 from .models import Choice, Question
+from .db import newpoll
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
@@ -54,4 +55,20 @@ def results(request, question_id):
     return render(request, 'polls/results.html', {'question': question})
 
 def new(request):
+    try:
+        get = request.GET
+    except:
+        message = 'error'
+    if get != '<QueryDict: {}>':
+        message = 'poll added'
+        try:
+            map = {'name': get['poll_name'], 'message': message}
+            newpoll(get['poll_name'], get['option_1'], get['option_2'])
+            return render(request, 'polls/new.html', map)
+        except:
+            message = ''
+            return render(request, 'polls/new.html')
+        
+    else:
+        message = ''
     return render(request, 'polls/new.html')
