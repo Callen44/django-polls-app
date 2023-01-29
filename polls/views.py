@@ -58,17 +58,15 @@ def new(request):
     try:
         get = request.GET
     except:
-        message = 'error'
-    if get != '<QueryDict: {}>':
-        message = 'poll added'
-        try:
-            map = {'name': get['poll_name'], 'message': message}
-            newpoll(get['poll_name'], get['option_1'], get['option_2'])
-            return HttpResponseRedirect(reverse('polls:index'))
-        except:
-            message = ''
-            return render(request, 'polls/new.html')
-        
-    else:
-        message = ''
-    return render(request, 'polls/new.html')
+        pass
+    try:
+        if get['poll_name'] == '' or get['option_1'] == '' or ['option_2'] == '':
+            return render(request, 'polls/new.html', )
+        else:
+            try:
+                newpoll(get['poll_name'], get['option_1'], get['option_2'])
+                return HttpResponseRedirect(reverse('polls:index'))
+            except:
+                return render(request, 'polls/new.html')
+    except:
+        return render(request, 'polls/new.html')
