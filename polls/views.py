@@ -64,7 +64,7 @@ def new(request):
         try:
             map = {'name': get['poll_name'], 'message': message}
             newpoll(get['poll_name'], get['option_1'], get['option_2'])
-            return render(request, 'polls/new.html', map)
+            return HttpResponseRedirect(reverse('polls:index'))
         except:
             message = ''
             return render(request, 'polls/new.html')
