@@ -13,5 +13,7 @@ urlpatterns = [
     # ex: /polls/5/vote/
     path('<int:question_id>/vote/', views.vote, name='vote'),
     # url for new post
-    path('new/', views.new, name='new')
+    path('new/', views.new, name='new'),
+    # user signup
+    #path('signup/')
 ]
