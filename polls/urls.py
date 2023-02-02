@@ -12,8 +12,8 @@ urlpatterns = [
     path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
     # ex: /polls/5/vote/
     path('<int:question_id>/vote/', views.vote, name='vote'),
-    # url for new post
+    # url for new post ex: /new
     path('new/', views.new, name='new'),
-    # user signup
-    #path('signup/')
+    # url for viewing all polls ex: /all
+    path('all/', views.AllView.as_view(), name='all')
 ]
