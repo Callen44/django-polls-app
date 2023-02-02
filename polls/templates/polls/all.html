@@ -1,6 +1,7 @@
 <h1>all polls</h1>
-<a href="{% url 'polls:index'%}">go home</a>
-
+<nav>
+    <a href="{% url 'polls:index'%}">go home</a>
+</nav>
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
