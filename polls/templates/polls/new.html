@@ -1,4 +1,6 @@
-<form action = "" method = "get">
+<form action ="{% url 'polls:new' %}" method = "post">
+
+    {% csrf_token %}
     <label for="poll_name">Poll name: </label>
     <input id="poll_name" type="text" name="poll_name" required>
     <br>

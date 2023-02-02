@@ -56,7 +56,7 @@ def results(request, question_id):
 
 def new(request):
     try:
-        get = request.GET
+        get = request.POST
     except:
         pass
     try:
